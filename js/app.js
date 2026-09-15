@@ -6,10 +6,14 @@
   const history = [];
   let state = { slots: {}, names: { r1: "Rebeca", r2: "Samantha" } };
 
+  const today = new Date();
+  const currentMonth = today.getMonth() + 1;
+  const currentYear = today.getFullYear();
+
   ScheduleCalendar.months.forEach((name,index) => month.add(new Option(name,index+1)));
-  for (let value=2026; value<=2030; value++) year.add(new Option(value,value));
-  month.value = 8;
-  year.value = 2026;
+  for (let value=currentYear-1; value<=currentYear+4; value++) year.add(new Option(value,value));
+  month.value = currentMonth;
+  year.value = currentYear;
 
   function parseKey(value) {
     return value.split("-").map(Number);
